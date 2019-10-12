@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title th:text="${recipe.name}"></title>
+</head>
+<body class="site" style="margin: 15px">
+<div id="fb-root"></div>
+<h2 th:text="${recipe.name}" style="color: mediumblue; text-align: center"></h2>
+<span th:text="${recipe.description}" style="margin: 10px"></span><br/>
+
+<form method="post" th:action="@{/addlike}" th:object="${recipe}" style="margin: 10px">
+    <button type="submit" class="btn btn-primary" style="margin: 5px">Lubię to!</button>
+</form>
+
+<span th:text="'Liczba polubień: ' + ${recipe.likes}" style="margin-left: 10px;"></span>
+
+<div class="form-column" style="margin: 20px">
+    <a th:href="'edytuj/' + ${recipe.id}">Edytuj przepis</a><br/>
+    <a th:href="'usun/' + ${recipe.id}">Usuń przepis</a><br/>
+    <a th:href="'/'">Powrót do strony głównej</a><br/>
+</div>
+</body>
+</html>

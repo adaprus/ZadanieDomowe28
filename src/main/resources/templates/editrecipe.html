@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="form-group col-md-4" style="margin: 10px">
+    <h3 style="margin: 10px">Dodaj przepis</h3>
+    <form method="post" th:action="@{/editrecipe}" th:object="${recipe}">
+        <input type="text" th:field="*{name}" placeholder="Nazwa" th:value="${recipe.name}"
+               style="margin-bottom: 10px; width: 300px"><br/>
+        <textarea rows="15" type="text" th:field="*{description}" placeholder="Opis"
+                  style="margin-bottom: 10px; width: 300px"></textarea><br/>
+        <select th:field="*{category}" class="form-control" style="margin-bottom: 10px; width: 200px">
+            <option th:each="category: ${categories}" th:text="${category.name.polishName}"
+                    th:value="${category.id}"></option>
+        </select>
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+    </form>
+</div>
+</body>
+</html>

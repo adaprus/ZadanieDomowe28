@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <style>
+        .site {
+            margin: 10px;
+        }
+        h2{
+            margin-left: 15px;
+            color: mediumblue;
+        }
+    </style>
+    <title th:text="${category.name.polishName}"></title>
+</head>
+<body class="site">
+<div class="form-row" style="margin: 10px">
+    <img th:src="${category.image}" style="width: 120px; height: 70px"/>
+    <div class="category-info ml-2">
+        <h2 th:text="${category.name.polishName}"></h2>
+        <p th:text="${category.description}" style=":width: 100px"></p>
+    </div>
+
+</div>
+<ul><li th:each="recipe : ${category.recipes}">
+    <a th:href="@{'przepis/' + ${recipe.id}}" th:text="${recipe.name}"></a>
+</li></ul>
+
+
+</body>
+</html>
