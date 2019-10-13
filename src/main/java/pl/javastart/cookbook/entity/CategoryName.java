@@ -1,4 +1,4 @@
-package pl.javastart.cookbook;
+package pl.javastart.cookbook.entity;
 
 public enum CategoryName {
     DESSERTS ("Desery"),

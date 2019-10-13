@@ -1,11 +1,14 @@
-package pl.javastart.cookbook;
+package pl.javastart.cookbook.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import pl.javastart.cookbook.repository.CategoryRepository;
+import pl.javastart.cookbook.entity.Recipe;
+import pl.javastart.cookbook.repository.RecipeRepository;
+import pl.javastart.cookbook.entity.Category;
 
 import java.util.List;
 import java.util.Optional;
@@ -67,11 +70,18 @@ public class RecipeController {
         }
     }
 
-    @PostMapping("/addlike")
-    private String addLike(Recipe recipe) {
-        int likes = recipe.getLikes();
+    @PostMapping("/addlike/{id}")
+    private String addLike(@PathVariable Long id) {
+        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
-        recipe.setLikes(likes + 1);
-        return "redirect:/";
+        if (recipeOptional.isPresent()) {
+            Recipe recipe = recipeOptional.get();
+            int likes = recipe.getLikes();
+            recipe.setLikes(likes + 1);
+            recipeRepository.save(recipe);
+            return "redirect:/kategoria/przepis/{id}";
+        } else {
+            return "Nie znaleziono takiego przepisu";
+        }
     }
 }

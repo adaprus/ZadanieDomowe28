@@ -1,10 +1,13 @@
-package pl.javastart.cookbook;
+package pl.javastart.cookbook.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import pl.javastart.cookbook.repository.CategoryRepository;
+import pl.javastart.cookbook.entity.Recipe;
+import pl.javastart.cookbook.repository.RecipeRepository;
+import pl.javastart.cookbook.entity.Category;
 
 import java.util.Comparator;
 import java.util.List;

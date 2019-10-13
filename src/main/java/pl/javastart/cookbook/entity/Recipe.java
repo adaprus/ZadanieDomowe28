@@ -1,4 +1,6 @@
-package pl.javastart.cookbook;
+package pl.javastart.cookbook.entity;
+
+import pl.javastart.cookbook.entity.Category;
 
 import javax.persistence.*;
 
